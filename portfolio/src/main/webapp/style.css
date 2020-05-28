@@ -55,15 +55,21 @@ header ul li a {
 #home {
     padding-top: 150px;
     padding-bottom: 150px;
-    display: block;
+    display: flex;
     font-size: 15px;
     text-align: center;
     margin: auto;
+    border-bottom: 1px solid black;
 }
 #text {
-    display: flex;
     width: 50%;
+    float: left;
     font-size: 3vw;
+}
+#denzilpicture{
+    width: 50%;
+    float: right;
+    border-radius: 50%;
 }
 
 #about-me {
