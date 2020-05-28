@@ -3,8 +3,11 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-
+h2 {
+    font-size: 3vw;
+}
 body {
+    line-height: 1.6;
     width: 80vw;
     margin-right: auto;
     margin-left: auto;
@@ -33,7 +36,7 @@ header ul li {
     font-weight: 500;
     font-size: 16px;
     display: inline-block;
-    margin: 0px 20px;
+    margin: auto 20px;
     border-bottom: 2px ;
 }
 
@@ -49,32 +52,58 @@ header ul li a {
     padding: 3px;
 }
 
-#text {
-    text-align: left;
-}
-#home {
+section {
     padding-top: 150px;
     padding-bottom: 150px;
+}
+
+#home {
     display: flex;
     font-size: 15px;
     text-align: center;
     margin: auto;
     border-bottom: 1px solid black;
 }
-#text {
+#home #text {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: left;
     width: 50%;
     float: left;
-    font-size: 3vw;
 }
-#denzilpicture{
+
+#denzilpicture {
     width: 50%;
     float: right;
     border-radius: 50%;
 }
 
 #about-me {
-background-color: red;
+    display: flex;
 }
+
+#about-me #experiences {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 60%;
+    background-color: silver;
+    float: left;
+    
+}
+
+#about-me #text {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: right;
+    width: 40%;
+    float: right;
+    
+}
+
+#about-me #text p{
+    font-size: 30px;    
+}
+
 #projects {
 background-color: yellow;
 }
