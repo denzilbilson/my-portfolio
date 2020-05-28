@@ -1,60 +1,77 @@
-*{
-    margin: 0;
-    border: 0;
-    padding: 0;
-}
-header{    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5%;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
-#menu ul {
+body {
+    width: 80vw;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding-top: 60px;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+header strong {
+    font-size: 1vw;
+}
+
+header ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
     list-style-type: none;
 }
 
-#menu ul li {
+header ul li {
     font-weight: 500;
     font-size: 16px;
     display: inline-block;
     margin: 0px 20px;
+    border-bottom: 2px ;
 }
 
-#menu ul li:hover {
-    font-weight: bold;
+header ul li a:hover {
     border-bottom: 2px solid black;
 }
 
-#menu ul li a{
+header ul li a {
     text-decoration: none;
     text-align: center;
     color: black;
+    display: block;
+    padding: 3px;
 }
 
-
+#text {
+    text-align: left;
+}
 #home {
-    background: red;
-    height: 100vh;
-    width: 99vw;
-    vertical-align: middle;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    display: block;
+    font-size: 15px;
+    text-align: center;
+    margin: auto;
+}
+#text {
+    display: flex;
+    width: 50%;
+    font-size: 3vw;
 }
 
-#about-me{
-    background: orange;
-    height: 100vh;
-    width: 99vw;
+#about-me {
+background-color: red;
 }
-#projects{
-    background: yellow;
-    height: 100vh;
-    width: 99vw;
+#projects {
+background-color: yellow;
 }
-#contact-me{
-    background: green;
-    height: 100vh;
-    width: 99vw;
+#contact-me {
+background-color: orange;
 }
