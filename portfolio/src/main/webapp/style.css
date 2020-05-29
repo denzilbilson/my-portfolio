@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
 h2 {
     font-size: 3vw;
 }
+
 body {
     line-height: 1.6;
     width: 80vw;
@@ -22,7 +25,7 @@ header {
 }
 
 header strong {
-    font-size: 1vw;
+    font-size: 40px;
 }
 
 header ul {
@@ -64,7 +67,8 @@ section {
     margin: auto;
     border-bottom: 1px solid black;
 }
-#home #text {
+
+#home-text {
     margin-top: auto;
     margin-bottom: auto;
     text-align: left;
@@ -80,60 +84,101 @@ section {
 
 #about-me {
     display: flex;
+    border-bottom: 1px solid black;
 }
 
-#about-me #experiences {
+#experiences {
     margin: auto;
     width: 60%;
     display: inline-block;
 }
 
-#experiences .box-block{
+.block {
     margin: 0 auto;
     display: flex;
     float: left;
 }
 
-
-
-#experiences .box {
-background: #fff;
-  border-radius: 20%;
-  height: 12.5rem;
-  margin: 1rem;
-  width: 12.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  display: flex;
-  align-items: center;
+.box {
+    background: #fff;
+    border-radius: 20%;
+    height: 200px;
+    margin: 16px;
+    width: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    display: flex;
+    align-items: center;
 }
 
-#experiences .box:hover {
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+.box:hover {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
-#experiences .box img {
+.box img {
     width: 90%;
-    height: 90%;   
+    height: 90%;
     margin: auto;
 }
 
-#about-me #text {
+#about-me-text {
     margin-top: auto;
     margin-bottom: auto;
     text-align: right;
     width: 40%;
     float: right;
-    
 }
 
-#about-me #text p{
-    font-size: 30px;    
+#about-me-text p {
+    font-size: 30px;
 }
 
 #projects {
-background-color: yellow;
+    display: flex;
 }
-#contact-me {
-background-color: orange;
+
+#projects img {
+    background: #fff;
+    border-radius: 20%;
+    height: 300px;
+    margin: 20px;
+    width: 400px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    display: flex;
+    align-items: center;
+}
+
+#projects img:hover {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+footer {
+  font-family: 'Roboto', sans-serif;
+  background:#363b3f;
+ }
+
+footer ul {
+    width: 100%;
+    text-align: center;
+
+    padding-left: 0px;
+}
+
+footer li {
+    display: inline-block;
+    margin: 4px;
+}
+
+footer li a {
+    display: block;
+    text-decoration: none;
+    border-bottom: medium none;
+    padding: 10px;
+    border-radius: 3px;
+    background: #444749;
+}
+
+.icon:hover {
+  filter: invert(100%);
 }
