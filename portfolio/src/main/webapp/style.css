@@ -182,3 +182,9 @@ footer li a {
 .icon:hover {
   filter: invert(100%);
 }
+#comment-container{
+    color: red;
+    border: 1px solid black;
+    list-style-type: none;
+    padding: 0;
+}
