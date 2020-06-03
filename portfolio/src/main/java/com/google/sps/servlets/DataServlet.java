@@ -14,6 +14,7 @@
 
 package com.google.sps.servlets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,66 +23,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+class submitComment{
+    public String name, content;
+}
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    
-    private ArrayList<String> comment;
-    @Override
-    public void init(){
-        comment = new ArrayList<>();
-        comment.add("Nice layout! I love the position of the elements on the page!");
-        comment.add("You might want to look into making your website responsive, it doesn't loosk so good on smaller screens");
-        comment.add("Do you have any other projects you can share?");
-        comment.add("Wubba lubba dub dub!");
-    }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String json = convertToJson(comment);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    submitComment newComment = new submitComment();
+    newComment.name = request.getParameter("name");
+    newComment.content = request.getParameter("content");
+
+    Gson gson = new Gson();
+    String json = gson.toJson(newComment);
     response.setContentType("application/json;");
     response.getWriter().println(json);
-  }
-    private String convertToJson(ArrayList<String> input) {
-    String json = "{";
-
-    json += "\"comments\": [";
-    json += "{";
-    json += "\"name\": ";
-    json += "\"" + "Jacob" + "\"";
-    json += ", ";
-    json += "\"content\": ";
-    json += "\"" + comment.get(0) + "\"";
-    json += "}";
-    json += ", ";
-
-    json += "{";
-    json += "\"name\": ";
-    json += "\"" + "Sheila" + "\"";
-    json += ", ";
-    json += "\"content\": ";
-    json += "\"" + comment.get(1) + "\"";
-    json += "}";
-    json += ", ";
-
-    json += "{";
-    json += "\"name\": ";
-    json += "\"" + "Rupert" + "\"";
-    json += ", ";
-    json += "\"content\": ";
-    json += "\"" + comment.get(2) + "\"";
-    json += "}";
-    json += ", ";
-    json += "{";
-    json += "\"name\": ";
-    json += "\"" + "Rick" + "\"";
-    json += ", ";
-    json += "\"content\": ";
-    json += "\"" + comment.get(3) + "\"";
-    json += "}";
-
-    json += "]}";
-    return json;
+    response.sendRedirect("/");
   }
 }

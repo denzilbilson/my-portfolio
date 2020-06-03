@@ -14,13 +14,6 @@
 function showComments(){
     fetch("/data").then(response => response.json()).then((comment) => {
             comment = comment.comments;
-            let docObj = document.getElementById("comment-container");
-            docObj.innerHTML += "<ul>";
-            docObj.innerHTML += "<li><h1>" + comment[0].name + "</h1>" + comment[0].content + "</li>";
-            docObj.innerHTML += "<li><h1>" + comment[1].name + "</h1>" + comment[1].content + "</li>";
-            docObj.innerHTML += "<li><h1>" + comment[2].name + "</h1>" + comment[2].content + "</li>";
-            docObj.innerHTML += "<li><h1>" + comment[3].name + "</h1>" + comment[3].content + "</li>";
-            docObj.innerHTML += "</ul>";
             console.log(comment);
             console.log(comment[0].name);
 
