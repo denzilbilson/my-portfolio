@@ -30,33 +30,51 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 class submitComment{
-    public String name, content;
+	public String name, content;
+	public submitComment(String name, String content){
+		this.name = name;
+		this.content = content;
+	}
 }
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-  }
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Query query = new Query("Comment").addSort("name", SortDirection.DESCENDING);
 
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // get information from user and store in submitComment object
-    submitComment newComment = new submitComment();
-    newComment.name = request.getParameter("name");
-    newComment.content = request.getParameter("content");
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		PreparedQuery results = datastore.prepare(query);
 
-    Gson gson = new Gson();
-    String json = gson.toJson(newComment);
-    
-    Entity taskEntity = new Entity("Comment");
-    taskEntity.setProperty("name", newComment.name);
-    taskEntity.setProperty("content", newComment.content);
+		List<submitComment> commentList = new ArrayList<>();
+		for (Entity entity : results.asIterable()) {
+			String userName = (String) entity.getProperty("name");
+			String userContent = (String) entity.getProperty("content");
+			submitComment user = new submitComment(userName, userContent);
+			commentList.add(user);
+		}
+		Gson gson = new Gson();
 
-    // add information to datastore
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(taskEntity);
-    response.sendRedirect("/");
-  }
+		response.setContentType("application/json;");
+		response.getWriter().println(gson.toJson(commentList));
+	}
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// get information from user and store in submitComment object
+		// newComment.name = request.getParameter("name");
+		// newComment.content = request.getParameter("content");
+		submitComment newComment = new submitComment(request.getParameter("name"),request.getParameter("content"));
+		Gson gson = new Gson();
+		String json = gson.toJson(newComment);
+
+		Entity taskEntity = new Entity("Comment");
+		taskEntity.setProperty("name", newComment.name);
+		taskEntity.setProperty("content", newComment.content);
+
+		// add information to datastore
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		datastore.put(taskEntity);
+		response.sendRedirect("/");
+	}
 }

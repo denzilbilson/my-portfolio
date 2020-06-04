@@ -11,11 +11,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-function showComments(){
-    fetch("/data").then(response => response.json()).then((comment) => {
-            comment = comment.comments;
-            console.log(comment);
-            console.log(comment[0].name);
 
-    });
-}
+fetch('/data').then(response => response.json()).then((comment) => {
+	let doc = document.getElementById('comment-container');
+	for(x in comment){
+		doc.innerHTML += "<li>";
+		doc.innerHTML += "<h3>" + comment[x].name + "</h3>";
+		doc.innerHTML += "<p>" + comment[x].content + "</p>";
+		doc.innerHTML += "</li>";
+	}
+});
