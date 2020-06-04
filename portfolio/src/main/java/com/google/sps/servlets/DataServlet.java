@@ -42,7 +42,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    long timestamp = System.currentTimeMillis();
+    // get information from user and store in submitComment object
     submitComment newComment = new submitComment();
     newComment.name = request.getParameter("name");
     newComment.content = request.getParameter("content");
@@ -53,8 +53,8 @@ public class DataServlet extends HttpServlet {
     Entity taskEntity = new Entity("Comment");
     taskEntity.setProperty("name", newComment.name);
     taskEntity.setProperty("content", newComment.content);
-    taskEntity.setProperty("time", timestamp);
 
+    // add information to datastore
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(taskEntity);
     response.sendRedirect("/");
