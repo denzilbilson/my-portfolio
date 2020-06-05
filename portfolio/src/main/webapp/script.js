@@ -13,18 +13,16 @@
 
 
 fetch('/data').then(response => response.json()).then((comments) => {
-	let doc = document.getElementById('comments-container');
-    let ul = document.createElement('ul');
-    doc.appendChild(ul);
+	let commentSection = document.getElementById('comments-container');
     
 	for(x in comments){
-        let li = document.createElement('li');
-        ul.appendChild(li);
-        let h = document.createElement('h5');
-        li.appendChild(h);
-        h.innerHTML += comments[x].name;
-        let p = document.createElement('p');
-        li.appendChild(p);
-        p.innerHTML += comments[x].content;
+
+        commentSection.innerHTML += addComment(comments[x]);
 	}
 });
+
+function addComment(comment){
+    let string = `<li><h3> ${comment.name} </h3>`;
+    string += `<p> ${comment.content} </p></li>`;
+    return string;
+}

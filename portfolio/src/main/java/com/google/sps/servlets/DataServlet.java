@@ -29,9 +29,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-class submitComment{
+class comment{
 	public String name, content;
-	public submitComment(String name, String content){
+	public comment(String name, String content){
 		this.name = name;
 		this.content = content;
 	}
@@ -47,11 +47,11 @@ public class DataServlet extends HttpServlet {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		PreparedQuery results = datastore.prepare(query);
 
-		List<submitComment> commentList = new ArrayList<>();
+		List<comment> commentList = new ArrayList<>();
 		for (Entity entity : results.asIterable()) {
 			String userName = (String) entity.getProperty("name");
 			String userContent = (String) entity.getProperty("content");
-			submitComment user = new submitComment(userName, userContent);
+			comment user = new comment(userName, userContent);
 			commentList.add(user);
 		}
 		Gson gson = new Gson();
@@ -59,26 +59,27 @@ public class DataServlet extends HttpServlet {
 		response.setContentType("application/json;");
 		response.getWriter().println(gson.toJson(commentList));
 	}
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// get information from user and store in submitComment object
+		// get information from user and store in comment object
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
         if(name.isEmpty() || content.isEmpty()){
             response.sendRedirect("/");
             return;
         }
-		submitComment newComment = new submitComment(name, content);
+		comment newComment = new comment(name, content);
 		Gson gson = new Gson();
 		String json = gson.toJson(newComment);
 
-		Entity taskEntity = new Entity("Comment");
-		taskEntity.setProperty("name", newComment.name);
-		taskEntity.setProperty("content", newComment.content);
+		Entity commentEntity = new Entity("Comment");
+		commentEntity.setProperty("name", newComment.name);
+		commentEntity.setProperty("content", newComment.content);
 
 		// add information to datastore
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		datastore.put(taskEntity);
+		datastore.put(commentEntity);
 		response.sendRedirect("/");
 	}
 }

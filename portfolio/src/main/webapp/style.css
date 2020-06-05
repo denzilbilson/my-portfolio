@@ -201,7 +201,7 @@ textarea {
     display: table;
 }
 
-#submit {
+input[type=submit] {
     border: none;
     color: white;
     padding: 15px 32px;
@@ -215,8 +215,8 @@ textarea {
 }
 
 
-submit:hover{
-    filter: invert(100%);
+input[type=submit]:hover{
+	filter: invert(100%);
 }
 
 #comments-container {
@@ -224,10 +224,6 @@ submit:hover{
     margin: 0 auto;
 	list-style-type: none;
 	padding: 0;
-}
-
-#comments-container ul {
-    list-style-type: none;
 }
 
 #comments-container li {
