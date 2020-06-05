@@ -12,12 +12,19 @@
 // limitations under the License.
 
 
-fetch('/data').then(response => response.json()).then((comment) => {
-	let doc = document.getElementById('comment-container');
-	for(x in comment){
-		doc.innerHTML += "<li>";
-		doc.innerHTML += "<h3>" + comment[x].name + "</h3>";
-		doc.innerHTML += "<p>" + comment[x].content + "</p>";
-		doc.innerHTML += "</li>";
+fetch('/data').then(response => response.json()).then((comments) => {
+	let doc = document.getElementById('comments-container');
+    let ul = document.createElement('ul');
+    doc.appendChild(ul);
+    
+	for(x in comments){
+        let li = document.createElement('li');
+        ul.appendChild(li);
+        let h = document.createElement('h5');
+        li.appendChild(h);
+        h.innerHTML += comments[x].name;
+        let p = document.createElement('p');
+        li.appendChild(p);
+        p.innerHTML += comments[x].content;
 	}
 });

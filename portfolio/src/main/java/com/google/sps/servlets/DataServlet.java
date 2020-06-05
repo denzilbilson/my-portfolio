@@ -62,9 +62,13 @@ public class DataServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// get information from user and store in submitComment object
-		// newComment.name = request.getParameter("name");
-		// newComment.content = request.getParameter("content");
-		submitComment newComment = new submitComment(request.getParameter("name"),request.getParameter("content"));
+		String name = request.getParameter("name");
+		String content = request.getParameter("content");
+        if(name.isEmpty() || content.isEmpty()){
+            response.sendRedirect("/");
+            return;
+        }
+		submitComment newComment = new submitComment(name, content);
 		Gson gson = new Gson();
 		String json = gson.toJson(newComment);
 

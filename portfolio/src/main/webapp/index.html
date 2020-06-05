@@ -75,16 +75,15 @@
 			</section>
 			<section>
 				<form action="/data" method="POST">
-					<label for="name">Name:</label>
+					<input type="text" id="name" name="name" placeholder="Name...">
 					<br>
-					<input type="text" id="name" name="name">
 					<br>
-					<label for="content">Comment:</label>
-					<br>
-					<input type="text" id="content" name="content">
-					<input type="submit" value="Submit">
+					<textarea type="text" id="content" name="content" placeholder="Your Comment..."></textarea>
+					<input type="submit" value="Submit" id="submit">
 				</form>
 			</section>
-			<section id="comment-container">
+			<section id="comments-container">
+                <h2> Comments </h2>
+			</section>
 	</body>
 </html>
