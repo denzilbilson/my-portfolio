@@ -5,9 +5,11 @@
 		<title>Denzil's Portfolio</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="style.css">
-		<script src="script.js"></script>
+        <script type="text/javascript" src="config.js"></script>
+        <script src="script.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgC07tf8HPTYXYeG89LaU24RsGw4fBiGc"></script>
 	</head>
-	<body>
+	<body onload="_init_()">
 		<header>
 			<strong>&lt;denzilbilson /&gt;</strong>
 			<ul>
@@ -45,7 +47,8 @@
 							<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="picture of Python logo">
 						</div>
 						<div class="box">
-							<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="picture of Google logo">                        </div>
+							<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="picture of Google logo">
+                        </div>
 					</div>
 				</div>
 				<div id="about-me-text">
@@ -57,6 +60,10 @@
 					</p>
 				</div>
 			</section>
+            <section id="map-container">
+                <h2>Where I'm From</h2>
+                <div id="map"></div>
+            </section>
 			<section id="projects">
 				<div class="block">
 					<a href="http://project-conduit.appspot.com/" target="_blank"><img src="/images/pong.png" alt="picture of pong game"></a>
