@@ -18,7 +18,8 @@ var map_key = keys.MAP_KEY;
 
 function _init_(){
     initMap();
-    initComment();  
+    initComment();
+    initStats(); 
 }
 
 // print comments into #comments-container div
@@ -26,9 +27,8 @@ function initComment(){
     fetch('/data').then(response => response.json()).then((comments) => {
         let commentSection = document.getElementById('comments-container');
         
-        for(x in comments){
-
-            commentSection.innerHTML += addComment(comments[x]);
+        for(userComment of comments){
+            commentSection.innerHTML += addComment(userComment);
         }
     });
 }
@@ -168,4 +168,30 @@ function initMap(){
     });
     map.mapTypes.set('styled_map', styledMapType);
     map.setMapTypeId('styled_map');
+}
+
+function initStats(){
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    /** Creates a chart and adds it to the page. */
+    function drawChart() {
+        const data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Visits');
+        data.addRows([
+        ['Lions', 10],
+        ['Tigers', 5],
+        ['Bears', 15]
+        ]);
+
+        const options = {
+            'title': 'Website Traffic',
+            'width':500,
+            'height':500
+    };
+
+    const chart = new google.visualization.LineChart(document.getElementById('comment-stats'));
+    chart.draw(data, options);
+    }
 }

@@ -29,9 +29,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-class comment{
+class Comment{
 	public String name, content;
-	public comment(String name, String content){
+	public Comment(String name, String content){
 		this.name = name;
 		this.content = content;
 	}
@@ -47,11 +47,11 @@ public class DataServlet extends HttpServlet {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		PreparedQuery results = datastore.prepare(query);
 
-		List<comment> commentList = new ArrayList<>();
+		List<Comment> commentList = new ArrayList<>();
 		for (Entity entity : results.asIterable()) {
 			String userName = (String) entity.getProperty("name");
 			String userContent = (String) entity.getProperty("content");
-			comment user = new comment(userName, userContent);
+			Comment user = new Comment(userName, userContent);
 			commentList.add(user);
 		}
 		Gson gson = new Gson();
@@ -69,7 +69,7 @@ public class DataServlet extends HttpServlet {
             response.sendRedirect("/");
             return;
         }
-		comment newComment = new comment(name, content);
+		Comment newComment = new Comment(name, content);
 		Gson gson = new Gson();
 		String json = gson.toJson(newComment);
 

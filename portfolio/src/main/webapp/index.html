@@ -5,9 +5,10 @@
 		<title>Denzil's Portfolio</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="style.css">
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript" src="config.js"></script>
         <script src="script.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgC07tf8HPTYXYeG89LaU24RsGw4fBiGc"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=[API KEY HERE]"></script>
 	</head>
 	<body onload="_init_()">
 		<header>
@@ -85,12 +86,13 @@
 					<input type="text" id="name" name="name" placeholder="Name...">
 					<br>
 					<br>
-					<textarea type="text" id="content" name="content" placeholder="Your Comment..."></textarea>
+					<textarea id="content" name="content" placeholder="Your Comment..."></textarea>
 					<input type="submit" value="Submit" id="submit">
 				</form>
 			</section>
 			<section id="comments-container">
                 <h2> Comments </h2>
 			</section>
+            <section id="comment-stats"></section>
 	</body>
 </html>
