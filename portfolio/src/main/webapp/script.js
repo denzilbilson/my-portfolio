@@ -16,10 +16,23 @@ var map;
 var styledMapType;
 var map_key = keys.MAP_KEY;
 
+// add API's to HTML head
+load(`https://maps.googleapis.com/maps/api/js?key=${map_key}`); // map API
+load("https://www.gstatic.com/charts/loader.js"); // charts API
+
+// runs functions when the page is loaded
 function _init_(){
     initMap();
     initComment();
     initStats(); 
+}
+
+// passes parameter as a script file
+function load(file){
+    var src = document.createElement("script");
+    src.setAttribute("type", "text/javascript");
+    src.setAttribute("src", file);
+    document.getElementsByTagName("head")[0].appendChild(src);
 }
 
 // print comments into #comments-container div
